@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EvenementsController!
+{% endblock %}
+
+{% block body %}
+
+
+	<div>
+		<h1>Voici la liste des évènements à venir dans les 3 prochains mois</h1>
+
+
+		{% for evenement in prochainsEvenements %}
+			<article>
+
+				<header>{{evenement.titre}}</header>
+				<main> {{evenement.description}}</main>
+				<footer class="grid">
+					Date {{evenement.date|date('d/m/Y')}}
+					Statut : {{evenement.statut}}</footer>
+			</article>
+		{% endfor %}
+	</div>
+{% endblock %}

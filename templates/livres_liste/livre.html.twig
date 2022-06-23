@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LivresListeController!
+{% endblock %}
+
+{% block body %}
+
+	<div class="example-wrapper container">
+
+		<h1>Hello {{ controller_name }}! ✅</h1>
+
+
+		<article>
+			<header>
+				<h2> {{ livre.nom }}
+				</h2>
+				<p>Auteur : {{livre.auteur.nom}}</p>
+			</header>
+			<footer class="grid">
+				<div>
+					État : {{livre.etat}}
+				</div>
+				<div>
+					Support : {{livre.support}}
+				</div>
+				<div>
+					{% if livre.fragile %}
+						FRAGILE
+					{% else %}
+						EMPRUNTABLE
+					{% endif %}
+				</div>
+
+			</footer>
+		</article>
+
+
+	</div>
+	<div class="container">
+		<h2>Les livres disponibles au même format :
+		</h2>
+		<div class="grid">
+			{% for livreConseillé in livresConseillés %}
+				<article>
+
+					<h3> {{ livreConseillé.nom }}
+					</h3>
+					<footer class="">
+						<div>
+							État : {{livreConseillé.etat|capitalize}}
+						</div>
+						<div>
+							Support : {{livreConseillé.support}}
+						</div>
+						<div>
+							{% if livreConseillé.fragile %}
+								FRAGILE
+							{% else %}
+								EMPRUNTABLE
+							{% endif %}
+						</div>
+
+					</footer>
+				</article>
+
+
+			{% endfor %}
+		</div>
+
+	{% endblock %}
